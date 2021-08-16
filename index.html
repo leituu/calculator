@@ -9,41 +9,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" href="img/calculator-icon-png-6.jpg">
+    <script src="app.js" defer></script>
     <title>Calculator</title>
 </head>
 <body>
     <div id="calc-cont">
         <div id="displ-cont">
-            <div id="op-displ"></div>
-            <div id="result-displ">200</div>
+            <div id="op-displ" data-previous-operand></div>
+            <div id="result-displ" data-current-operand></div>
         </div>
         <div id="btn-cont">
-            <button class="btn btn-num" id="one" type="button">1</button>  
-            <button class="btn btn-num" id="two" type="button">2</button>
-            <button class="btn btn-num" id="three" type="button">3</button>
-            <button class="btn btn-num" id="four" type="button">4</button>
-            <button class="btn btn-num" id="five" type="button">5</button>
-            <button class="btn btn-num" id="six" type="button">6</button>
-            <button class="btn btn-num" id="seven" type="button">7</button>
-            <button class="btn btn-num" id="eight" type="button">8</button>
-            <button class="btn btn-num" id="nine" type="button">9</button>
-            <button class="btn btn-num" id="zero" type="button">0</button>
-            <button class="btn btn-num" id="comma" type="button">,</button>
-            <button class="btn" id="add" type="button">+</button>
-            <button class="btn" id="subt" type="button">-</button>
-            <button class="btn" id="mult" type="button">*</button>
-            <button class="btn" id="div" type="button">/</button>
-            <button class="btn deleters" id="reset" type="button">CE</button>
-            <button class="btn deleters" id="del" type="button">C</button>
-            <button class="btn deleters" id="backspc" type="button">Back</button>
-            <button class="btn" id="perc" type="button">%</button>
-            <button class="btn btn-num" id="minus" type="button">+/-</button>
-            <button class="btn" id="inv" type="button">1/x</button>
-            <button class="btn" id="pow" type="button">x^2</button>
-            <button class="btn" id="sqrt" type="button">sqrt</button>
-            <button class="btn equal" id="equal" type="button">=</button>
+            <button class="btn btn-num" id="one" data-number>1</button>  
+            <button class="btn btn-num" id="two" data-number>2</button>
+            <button class="btn btn-num" id="three" data-number>3</button>
+            <button class="btn btn-num" id="four" data-number>4</button>
+            <button class="btn btn-num" id="five" data-number>5</button>
+            <button class="btn btn-num" id="six" data-number>6</button>
+            <button class="btn btn-num" id="seven" data-number>7</button>
+            <button class="btn btn-num" id="eight" data-number>8</button>
+            <button class="btn btn-num" id="nine" data-number>9</button>
+            <button class="btn btn-num" id="zero" data-number>0</button>
+            <button class="btn btn-num" id="dot" data-number>.</button>
+            <button class="btn" id="add" data-operation>+</button>
+            <button class="btn" id="subt" data-operation>-</button>
+            <button class="btn" id="mult" data-operation>*</button>
+            <button class="btn" id="div" data-operation>/</button>
+            <button class="btn deleters" id="reset" data-all-clear>AC</button>
+            <button class="btn deleters" id="del" data-clear>C</button>
+            <button class="btn deleters" id="backspc" data-del>Back</button>
+            <button class="btn" id="perc">%</button>
+            <button class="btn btn-num" id="minus">+/-</button>
+            <button class="btn" id="inv">1/x</button>
+            <button class="btn" id="pow">x^2</button>
+            <button class="btn" id="sqrt">sqrt</button>
+            <button class="btn equal" id="equal" data-equal>=</button>
         </div>
     </div>
-    <script src="app.js"></script>
 </body>
 </html>
