@@ -63,15 +63,19 @@ class Calculator {
         switch (this.operation) {
             case '+':
                 computation = prev + current;
+                computation = this.roundNumber(computation)
                 break;
             case '-':
                 computation = prev - current;
+                computation = this.roundNumber(computation)
                 break;
             case '/':
                 computation = prev / current;
+                computation = this.roundNumber(computation)
                 break;
             case '*':
                 computation = prev * current;
+                computation = this.roundNumber(computation)
                 break;
             default:
                 return;    
@@ -124,6 +128,10 @@ class Calculator {
             integerDisplay = `${integerDisplay}.${decimalDigits}`;
         }
         return integerDisplay;
+    }
+
+    roundNumber(number) {
+        return (Math.round(number*1000000000)/1000000000);
     }
 
     updateDisplay() {
