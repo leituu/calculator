@@ -27,7 +27,7 @@ class Calculator {
     appendNumber(number) {
         // Append number to currentOperationTextElem everytime a number is pressed
         if (number === '.' && this.currentOperand.includes('.')) return
-        if (this.currentOperand.length == 14) return
+        if (this.currentOperand.length == 12) return
         if (this.lastOperation === '=') {
             this.currentOperand = '';
             this.lastOperation = '';
@@ -82,6 +82,31 @@ class Calculator {
         this.previousOperand = '';
     }
 
+    pow() {
+        this.currentOperand = this.currentOperand * this.currentOperand;
+        this.lastOperation = '=';
+    }
+
+    sqrt() {
+        this.currentOperand = Math.round(Math.sqrt(this.currentOperand)*100000)/100000;
+        this.lastOperation = '=';
+    }
+
+    inverse() {
+        this.currentOperand = (Math.round(1/this.currentOperand*100000)/100000);
+        this.lastOperation = '=';
+    }
+
+    minus() {
+        this.currentOperand = (-1) * this.currentOperand;
+        this.lastOperation = '='
+    }
+
+    percentage() {
+        this.currentOperand = (Math.round(this.currentOperand*100)/10000);
+        this.lastOperation = '='
+    }
+
     getDisplayNumber(number) {
         // Adding format to numbers
         const stringNumber = number.toString();
@@ -96,9 +121,9 @@ class Calculator {
             })
         }
         if (decimalDigits != null) {
-            
+            integerDisplay = `${integerDisplay}.${decimalDigits}`;
         }
-        return number
+        return integerDisplay;
     }
 
     updateDisplay() {
@@ -124,9 +149,17 @@ const allClearButton = document.querySelector('[data-all-clear]');
 const equalButton = document.querySelector('[data-equal]');
 const previousOperationTextElem = document.querySelector('[data-previous-operand]');
 const currentOperationTextElem = document.querySelector('[data-current-operand]');
+const powButton = document.querySelector('[data-pow]');
+const sqrtButton = document.querySelector('[data-sqrt]')
+const invButton = document.querySelector('[data-inverse]')
+const minButton = document.querySelector('[data-minus]')
+const percButton = document.querySelector('[data-perc]')
+
 
 const calculator = new Calculator(previousOperationTextElem,currentOperationTextElem);
 
+
+// Listener for number buttons including dot
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText);
@@ -134,6 +167,7 @@ numberButtons.forEach(button => {
     })
 });
 
+// Listener for operation buttons
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.chooseOperation(button.innerText);
@@ -141,11 +175,14 @@ operationButtons.forEach(button => {
     })
 })
 
+// Listener for equal
 equalButton.addEventListener('click', () => {
     calculator.compute();
     calculator.updateDisplay();
 })
 
+
+// Listener for delete, clear & all clear
 allClearButton.addEventListener('click',() => {
     calculator.allClear();
     calculator.updateDisplay();
@@ -158,5 +195,31 @@ delButton.addEventListener('click', () => {
 
 clearButton.addEventListener('click', () => {
     calculator.clear();
+    calculator.updateDisplay();
+})
+
+// Listener for power
+powButton.addEventListener('click', () => {
+    calculator.pow();
+    calculator.updateDisplay();
+})
+
+sqrtButton.addEventListener('click', () => {
+    calculator.sqrt();
+    calculator.updateDisplay();
+})
+
+invButton.addEventListener('click', () => {
+    calculator.inverse();
+    calculator.updateDisplay();
+})
+
+minButton.addEventListener('click', () => {
+    calculator.minus();
+    calculator.updateDisplay();
+})
+
+percButton.addEventListener('click', ()=> {
+    calculator.percentage();
     calculator.updateDisplay();
 })
