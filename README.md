@@ -1,3 +1,3 @@
 # calculator
 Calculator created with JS
-Visit https://https://leituu.github.io/calculator/
+Visit https://leituu.github.io/calculator/
