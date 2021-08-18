@@ -134,6 +134,10 @@ class Calculator {
         return (Math.round(number*1000000000)/1000000000);
     }
 
+    // isNumber(number) {
+    //     return true
+    // }
+
     updateDisplay() {
         // Everytime a number is pressed or an operand is selected, display must
         // be updated
@@ -146,6 +150,8 @@ class Calculator {
         
     }
 }
+
+
 
 // Defining buttons
 
@@ -162,12 +168,13 @@ const sqrtButton = document.querySelector('[data-sqrt]')
 const invButton = document.querySelector('[data-inverse]')
 const minButton = document.querySelector('[data-minus]')
 const percButton = document.querySelector('[data-perc]')
-
+const keyboard = document.querySelector('body');
 
 const calculator = new Calculator(previousOperationTextElem,currentOperationTextElem);
 
 
 // Listener for number buttons including dot
+
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText);
@@ -231,3 +238,28 @@ percButton.addEventListener('click', ()=> {
     calculator.percentage();
     calculator.updateDisplay();
 })
+
+
+
+keyboard.addEventListener('keydown',(e) => {
+    if (Number.isInteger(parseInt(e.key))) {
+        calculator.appendNumber(e.key);
+        calculator.updateDisplay();
+    } else if (e.key === 'Backspace') {
+        calculator.delete();
+        calculator.updateDisplay();
+    } else if (e.key === 'Escape') {
+        calculator.allClear();
+        calculator.updateDisplay();
+    } else if (e.key === 'Delete') {
+        calculator.clear();
+        calculator.updateDisplay();
+    } else if (e.key === '+' || e.key === '-' || e.key === '*'|| e.key === '/') {
+        calculator.chooseOperation(e.key)
+        calculator.updateDisplay();
+    } else if (e.key === 'Enter') {
+        calculator.compute();
+        calculator.updateDisplay()
+    } else {console.log(e.key);}
+})
+
