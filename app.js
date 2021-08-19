@@ -244,22 +244,17 @@ percButton.addEventListener('click', ()=> {
 keyboard.addEventListener('keydown',(e) => {
     if (Number.isInteger(parseInt(e.key))) {
         calculator.appendNumber(e.key);
-        calculator.updateDisplay();
     } else if (e.key === 'Backspace') {
         calculator.delete();
-        calculator.updateDisplay();
     } else if (e.key === 'Escape') {
         calculator.allClear();
-        calculator.updateDisplay();
     } else if (e.key === 'Delete') {
         calculator.clear();
-        calculator.updateDisplay();
     } else if (e.key === '+' || e.key === '-' || e.key === '*'|| e.key === '/') {
         calculator.chooseOperation(e.key)
-        calculator.updateDisplay();
     } else if (e.key === 'Enter') {
         calculator.compute();
-        calculator.updateDisplay()
     } else {console.log(e.key);}
+    calculator.updateDisplay()
 })
 
